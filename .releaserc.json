@@ -48,10 +48,6 @@
               "section": "Bug fixes"
             },
             {
-              "type": "chore",
-              "section": "Misc. Chores"
-            },
-            {
               "type": "perf",
               "section": "Performance Improvements"
             },
@@ -63,6 +59,11 @@
             {
               "type": "style",
               "section": "Styles",
+              "hidden": true
+            },
+            {
+              "type": "chore",
+              "section": "Miscellaneous Chores",
               "hidden": true
             },
             {
