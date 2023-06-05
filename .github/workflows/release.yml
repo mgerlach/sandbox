@@ -18,5 +18,8 @@ jobs:
       - name: Create new release
         uses: cycjimmy/semantic-release-action@v3
         id: semantic
+        with:
+          extra_plugins: |
+            conventional-changelog-conventionalcommits
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
