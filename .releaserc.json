@@ -13,6 +13,10 @@
       {
         "releaseRules": [
           {
+            "type": "breaking",
+            "release": "major"
+          },
+          {
             "type": "chore",
             "release": "patch"
           }
