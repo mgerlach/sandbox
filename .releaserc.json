@@ -22,12 +22,9 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "releaseRules": [
-          {
-            "type": "chore",
-            "release": "patch"
-          }
-        ]
+        "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "feat", "fix", "perf", "chore"]
+        }
       }
     ],
     [
