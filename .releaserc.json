@@ -18,6 +18,7 @@
           },
           {
             "type": "chore",
+            "scope": "deps",
             "release": "patch"
           }
         ]
@@ -43,7 +44,7 @@
             },
             {
               "type": "chore",
-              "section": "Bug fixes"
+              "section": "Chores (and bug fixes for deps)"
             },
             {
               "type": "perf",
