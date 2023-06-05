@@ -44,6 +44,7 @@
             },
             {
               "type": "chore",
+              "scope": "deps",
               "section": "Bug fixes (deps) / misc. chores"
             },
             {
