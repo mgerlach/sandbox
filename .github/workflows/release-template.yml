@@ -43,7 +43,7 @@ jobs:
           echo "NOT RELEASE!"
 
       - name: if-sem-released-or-not-release-input
-        if: ${{ steps.semantic.outputs.new_release_published == 'true' }} || ${{ !inputs.build-release }}
+        if: ${{ steps.semantic.outputs.new_release_published == 'true' || !inputs.build-release }}
         run: |
           echo "RELEASE OR NOT RELEASE? THAT IS THE QUESTION!"
           echo "${{ steps.semantic.outputs.new_release_published }}"
