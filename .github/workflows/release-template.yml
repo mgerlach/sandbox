@@ -39,13 +39,13 @@ jobs:
         if: steps.semantic.outputs.new_release_published == 'true'
         run: |
           echo "RELEASE!"
-          echo "${{ github.event.inputs.build-release }}"
+          echo "${{ inputs.build-release }}"
 
       - name: if-not-release
-        if: ${{ github.event.inputs.build-release }} == 'false'
+        if: ${{ inputs.build-release }} == 'false'
         run: |
           echo "NOT RELEASE!"
-          echo "${{ github.event.inputs.build-release }}"
+          echo "${{ inputs.build-release }}"
 
       - name: if-release-or-not-release
         if: steps.semantic.outputs.new_release_published == 'true' || ${{ github.event.inputs.build-release }} == 'false'
