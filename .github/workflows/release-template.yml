@@ -27,7 +27,7 @@ jobs:
 
       - name: Create new release
         uses: cycjimmy/semantic-release-action@v4
-        if: ${{ inputs.build-release }} == 'true'
+        if: ${{ inputs.build-release }}
         id: semantic
         with:
           extra_plugins: |
@@ -39,17 +39,14 @@ jobs:
         if: steps.semantic.outputs.new_release_published == 'true'
         run: |
           echo "RELEASE!"
-          echo "${{ inputs.build-release }}"
 
       - name: if-not-release
-        if: ${{ inputs.build-release }} == 'false'
+        if: ${{ !inputs.build-release }}
         run: |
           echo "NOT RELEASE!"
-          echo "${{ inputs.build-release }}"
 
       - name: if-release-or-not-release
-        if: steps.semantic.outputs.new_release_published == 'true' || ${{ inputs.build-release }} == 'false'
+        if: steps.semantic.outputs.new_release_published == 'true' || ${{ !inputs.build-release }}
         run: |
           echo "RELEASE OR NOT RELEASE? THAT IS THE QUESTION!"
-          echo "${{ inputs.build-release }}"
 
