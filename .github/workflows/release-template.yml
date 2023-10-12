@@ -27,6 +27,9 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         if: ${{ inputs.build-release }}
         id: semantic
+        with:
+          extra_plugins: |
+            conventional-changelog-conventionalcommits
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
