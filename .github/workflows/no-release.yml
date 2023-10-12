@@ -1,4 +1,4 @@
-name: Release
+name: No release
 
 on:
   workflow_dispatch:
@@ -9,5 +9,5 @@ jobs:
     uses: ./.github/workflows/release-template.yml
     with:
       stack-name: 'TestStack'
-      build-release: true
+      build-release: false
     secrets: inherit

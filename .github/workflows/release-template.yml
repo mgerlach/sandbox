@@ -1,0 +1,51 @@
+name: Release template
+on:
+  workflow_call:
+    inputs:
+      stack-name:
+        required: true
+        type: string
+        description: 'The name of the stack to deploy'
+      build-release:
+        required: true
+        type: boolean
+        description: 'Whether to build a release or not'
+#  workflow_dispatch:
+#  push:
+#    branches:
+#      - main
+
+jobs:
+  build:
+    name: Release
+    runs-on: ubuntu-latest
+    outputs:
+      NEW_RELEASE_PUBLISHED: ${{ steps.semantic.outputs.new_release_published }}
+      NEW_RELEASE_VERSION: ${{ steps.semantic.outputs.new_release_version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create new release
+        uses: cycjimmy/semantic-release-action@v4
+        if: ${{ inputs.build-release }} == 'true'
+        id: semantic
+        with:
+          extra_plugins: |
+            conventional-changelog-conventionalcommits
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: if-release
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: |
+          echo "RELEASE!"
+
+      - name: if-not-release
+        if: ${{ inputs.build-release }} == 'false'
+        run: |
+          echo "NOT RELEASE!"
+
+      - name: if-release-or-not-release
+        if: steps.semantic.outputs.new_release_published == 'true' || ${{ inputs.build-release }} == 'false'
+        run: |
+          echo "RELEASE OR NOT RELEASE? THAT IS THE QUESTION!"
